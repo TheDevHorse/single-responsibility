@@ -9,7 +9,7 @@ class ProductFactoryTest {
     @Test
     void shouldCreateLaptopProductWithCorrectNameAndPrice() {
         // Given
-        String type = "laptop";
+        String type = "Laptop";
         String name = "MacBook-Pro";
         double basePrice = 1000.0;
         String color = "black";
@@ -25,7 +25,7 @@ class ProductFactoryTest {
     @Test
     void shouldCreatePhoneProductWithCorrectNameAndPrice() {
         // Given
-        String type = "phone";
+        String type = "Phone";
         String name = "iPhone-14";
         double basePrice = 800.0;
         String color = "green";
