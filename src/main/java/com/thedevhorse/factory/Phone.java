@@ -10,10 +10,18 @@ public class Phone implements Product {
                   double price,
                   String color) {
         this.name = name;
-        this.price = setPrice(price);
+        this.price = setPrice(price, color);
         this.color = color;
     }
 
+    /**
+     * Factory method to create a Phone instance.
+     *
+     * @param name  the name of the phone
+     * @param price the base price of the phone
+     * @param color the color of the phone
+     * @return a new Phone instance
+     */
     public static Product create(String name,
                                  double price,
                                  String color) {
@@ -24,12 +32,11 @@ public class Phone implements Product {
         );
     }
 
-
-    private double setPrice(double price) {
-        return price * colorPrice();
+    private double setPrice(double price, String color) {
+        return price * colorPrice(color);
     }
 
-    private double colorPrice() {
+    private double colorPrice(String color) {
         if (color.equalsIgnoreCase("green") || color.equalsIgnoreCase("red")) {
             return 2;
         }
