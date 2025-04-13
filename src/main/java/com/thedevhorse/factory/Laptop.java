@@ -2,9 +2,9 @@ package com.thedevhorse.factory;
 
 public class Laptop implements Product {
 
-    private String name;
-    private double price;
-    private String color;
+    private final String name;
+    private final double price;
+    private final String color;
 
     private Laptop(String name,
                    double price,
