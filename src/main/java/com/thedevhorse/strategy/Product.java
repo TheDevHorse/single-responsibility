@@ -1,4 +1,4 @@
 package com.thedevhorse.strategy;
 
-public record Product(double basePrice) {
+public record Product(String Name, double basePrice) {
 }

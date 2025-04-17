@@ -1,6 +1,6 @@
 package com.thedevhorse.strategy;
 
-public class ElectronicsDiscount implements Discount {
+public class ElectronicsDiscountStrategy implements DiscountStrategy {
 
     @Override
     public double calculateDiscount(Product product) {

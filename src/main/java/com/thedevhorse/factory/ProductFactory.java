@@ -5,7 +5,6 @@ import java.util.Map;
 
 public class ProductFactory {
 
-    @FunctionalInterface
     interface ProductFactoryMethod  {
         Product create(String name, double price, String color);
     }
