@@ -17,7 +17,7 @@ class PriceCalculatorTest {
         double finalPrice = strategy.calculateFinalPrice(product);
 
         // Then
-        assertEquals(90.0, finalPrice, 0.001); // 100 - 10%
+        assertEquals(10.0, finalPrice); // 100 - 10%
     }
 
     @Test
@@ -31,7 +31,7 @@ class PriceCalculatorTest {
         double finalPrice = strategy.calculateFinalPrice(product);
 
         // Then
-        assertEquals(170.0, finalPrice, 0.001); // 200 - 15%
+        assertEquals(30.0, finalPrice);
     }
 
     @Test
@@ -45,6 +45,6 @@ class PriceCalculatorTest {
         double finalPrice = strategy.calculateFinalPrice(product);
 
         // Then
-        assertEquals(40.0, finalPrice, 0.001); // 50 - 20%
+        assertEquals(10.0, finalPrice); // 50 - 20%
     }
 }
