@@ -55,8 +55,6 @@ This allows products to be created without exposing or duplicating instantiation
 
 ##  Strategy Pattern 
 
-##  Strategy Pattern – Each class performs one algorithm
-
 The `Strategy` pattern is used to define a family of algorithms, encapsulate each one, and make them interchangeable. It promotes flexibility by separating the algorithm from the class that uses it.
 
 In this project, it's applied to handle discount logic. Since discount rules can vary across product types and evolve over time, each rule is placed in its own class. `PriceCalculator` delegates the calculation to the selected strategy — keeping responsibilities isolated and aligned with SRP.
@@ -96,7 +94,7 @@ Each algorithm is isolated and easy to modify, test, or extend independently.
 
 ---
 
-##  Command Pattern – Each class represents a single action
+##  Command Pattern
 
 The `Command` pattern encapsulates a request as an object, allowing you to parameterize, queue, and execute actions independently of the calling code.
 
