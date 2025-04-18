@@ -16,12 +16,15 @@ By enforcing SRP, we reduce the likelihood of side effects during code changes, 
 
 ## Factory Pattern 
 
-The `ProductFactory` is responsible **only** for creating `Product` instances. It holds a mapping of product types to creation logic, which keeps object instantiation separated from business logic.
+In many systems, object creation logic is often scattered across different parts of the codebase — leading to duplication, tight coupling, and violations of SRP. The **Factory pattern** addresses this by centralizing creation logic.
+
+In this project, the `ProductFactory` is solely responsible for creating instances of products like `Phone` and `Laptop`. It uses a mapping of product types to their specific factory methods. This ensures that classes consuming products don't need to know how to construct them — only how to request them.
 
 ###  SRP in Action
 
-- `ProductFactory` handles object creation.
-- `Phone` and `Laptop` focus on product-specific logic.
+- `ProductFactory` encapsulates **only object creation**.
+- `Phone` and `Laptop` are responsible **only for product behavior and internal logic**.
+- Business logic remains clean and focused, free of instantiation details.
 
 ###  From the code:
 
