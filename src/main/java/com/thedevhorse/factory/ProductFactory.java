@@ -5,11 +5,7 @@ import java.util.Map;
 
 public class ProductFactory {
 
-    interface ProductFactoryMethod  {
-        Product create(String name, double price, String color);
-    }
-
-    private static final Map<String, ProductFactoryMethod > operationMap = new HashMap<>();
+    private static final Map<String, ProductFactoryMethod> operationMap = new HashMap<>();
 
     static {
         operationMap.put("Laptop", Laptop::create);
@@ -22,5 +18,9 @@ public class ProductFactory {
                 price,
                 color
         );
+    }
+
+    interface ProductFactoryMethod {
+        Product create(String name, double price, String color);
     }
 }
