@@ -14,7 +14,7 @@ By enforcing SRP, we reduce the likelihood of side effects during code changes, 
 
 ---
 
-## Factory Pattern – Only creates objects
+## Factory Pattern 
 
 The `ProductFactory` is responsible **only** for creating `Product` instances. It holds a mapping of product types to creation logic, which keeps object instantiation separated from business logic.
 
@@ -51,7 +51,7 @@ This allows products to be created without exposing or duplicating instantiation
 
 ---
 
-##  Strategy Pattern – Each class performs one algorithm
+##  Strategy Pattern 
 
 The `Strategy` pattern enables the use of interchangeable discount algorithms. Each strategy class encapsulates a **single pricing rule**.
 
@@ -90,7 +90,7 @@ Each algorithm is isolated and easy to modify, test, or extend independently.
 
 ---
 
-##  Command Pattern – Each class represents a single action
+##  Command Pattern
 
 The `Command` pattern encapsulates actions such as **adding** or **removing** a product from the shopping cart in distinct classes.
 
