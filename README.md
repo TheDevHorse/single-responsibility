@@ -25,10 +25,25 @@ The `ProductFactory` is responsible **only** for creating `Product` instances. I
 
 ###  From the code:
 
-
 ```java
 public static Product getProduct(String type, String name, double price, String color) {
     return operationMap.get(type).create(name, price, color);
+}
+```
+
+```java
+public class Phone implements Product {
+    public static Product create(String name, double price, String color) {
+        return new Phone(name, price, color);
+    }
+}
+```
+
+```java
+public class Laptop implements Product {
+    public static Product create(String name, double price, String color) {
+        return new Laptop(name, price, color);
+    }
 }
 ```
 
@@ -114,14 +129,10 @@ Every action has a well-defined, isolated responsibility.
 
 ---
 
-##  Conclusion
+## Conclusion
 
-By using these design patterns:
+By using these design patterns, each responsibility in the system is clearly separated:
 
-| Pattern   | SRP Responsibility Example              |
-|-----------|------------------------------------------|
-| Factory   | Only creates objects                     |
-| Strategy  | Each class performs one algorithm        |
-| Command   | Each class represents a single action    |
+The **Factory** pattern ensures that object creation is handled in one place, so creation logic doesn't leak into business logic. The **Strategy** pattern encapsulates each algorithm (like discount calculation) in its own class, making the system flexible and easily extendable. The **Command** pattern delegates actions like adding or removing products from the cart to individual classes, keeping responsibilities isolated and focused.
 
 These examples demonstrate how to structure code so that **each class has only one reason to change**. The result is a modular, extensible, and maintainable system — true to the spirit of the **Single Responsibility Principle**.
