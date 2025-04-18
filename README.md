@@ -16,9 +16,8 @@ By enforcing SRP, we reduce the likelihood of side effects during code changes, 
 
 ## Factory Pattern 
 
-In many systems, object creation logic is often scattered across different parts of the codebase — leading to duplication, tight coupling, and violations of SRP. The **Factory pattern** addresses this by centralizing creation logic.
+Object creation can become scattered and repetitive across a codebase. To avoid this, the `Factory` pattern centralizes instantiation logic. In this project, `ProductFactory` handles the creation of products like `Phone` and `Laptop`, mapping each type to its factory method. This keeps construction logic separate from business logic and adheres to SRP.
 
-In this project, the `ProductFactory` is solely responsible for creating instances of products like `Phone` and `Laptop`. It uses a mapping of product types to their specific factory methods. This ensures that classes consuming products don't need to know how to construct them — only how to request them.
 
 ###  SRP in Action
 
@@ -56,13 +55,17 @@ This allows products to be created without exposing or duplicating instantiation
 
 ##  Strategy Pattern 
 
-The `Strategy` pattern enables the use of interchangeable discount algorithms. Each strategy class encapsulates a **single pricing rule**.
+##  Strategy Pattern – Each class performs one algorithm
+
+The `Strategy` pattern is used to define a family of algorithms, encapsulate each one, and make them interchangeable. It promotes flexibility by separating the algorithm from the class that uses it.
+
+In this project, it's applied to handle discount logic. Since discount rules can vary across product types and evolve over time, each rule is placed in its own class. `PriceCalculator` delegates the calculation to the selected strategy — keeping responsibilities isolated and aligned with SRP.
 
 ###  SRP in Action
 
-- Each class represents one algorithm.
-- `PriceCalculator` delegates logic, and does not implement it.
-
+- Each strategy class encapsulates one specific discount rule.
+- `PriceCalculator` applies the strategy without knowing its internal logic.
+- New algorithms can be added without modifying existing code.
 ###  From the code:
 
 ```java
@@ -93,14 +96,17 @@ Each algorithm is isolated and easy to modify, test, or extend independently.
 
 ---
 
-##  Command Pattern
+##  Command Pattern – Each class represents a single action
 
-The `Command` pattern encapsulates actions such as **adding** or **removing** a product from the shopping cart in distinct classes.
+The `Command` pattern encapsulates a request as an object, allowing you to parameterize, queue, and execute actions independently of the calling code.
 
-###  SRP in Action
+In this project, it's used to model operations on a shopping cart — such as adding or removing a product — by placing each action in its own command class. This keeps the `ShoppingCart` focused on execution, not behavior.
 
-- Each command performs one action.
-- `ShoppingCart` doesn’t manage the logic itself, only delegates.
+### SRP in Action
+
+- Each command class encapsulates a single, well-defined operation.
+- `ShoppingCart` delegates execution without knowing the action's logic.
+- New actions can be added without changing existing code.
 
 ###  From the code:
 
