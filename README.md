@@ -4,7 +4,7 @@ This project demonstrates how the **Factory**, **Strategy**, and **Command** des
 
 ---
 
-## 🧠 What is the Single Responsibility Principle?
+##  What is the Single Responsibility Principle?
 
 The **Single Responsibility Principle (SRP)** in software design means that a class, module, or function should have **only one reason to change**. In other words, it should have only one responsibility or job.
 
@@ -14,16 +14,16 @@ By enforcing SRP, we reduce the likelihood of side effects during code changes, 
 
 ---
 
-## 🏭 Factory Pattern – Only creates objects
+## Factory Pattern – Only creates objects
 
 The `ProductFactory` is responsible **only** for creating `Product` instances. It holds a mapping of product types to creation logic, which keeps object instantiation separated from business logic.
 
-### ✅ SRP in Action
+###  SRP in Action
 
 - `ProductFactory` handles object creation.
 - `Phone` and `Laptop` focus on product-specific logic.
 
-### 🔍 From the code:
+###  From the code:
 
 
 ```java
@@ -36,16 +36,16 @@ This allows products to be created without exposing or duplicating instantiation
 
 ---
 
-## 🧮 Strategy Pattern – Each class performs one algorithm
+##  Strategy Pattern – Each class performs one algorithm
 
 The `Strategy` pattern enables the use of interchangeable discount algorithms. Each strategy class encapsulates a **single pricing rule**.
 
-### ✅ SRP in Action
+###  SRP in Action
 
 - Each class represents one algorithm.
 - `PriceCalculator` delegates logic, and does not implement it.
 
-### 🔍 From the code:
+###  From the code:
 
 ```java
 public class ElectronicsDiscountStrategy implements DiscountStrategy {
@@ -75,16 +75,16 @@ Each algorithm is isolated and easy to modify, test, or extend independently.
 
 ---
 
-## 🧾 Command Pattern – Each class represents a single action
+##  Command Pattern – Each class represents a single action
 
 The `Command` pattern encapsulates actions such as **adding** or **removing** a product from the shopping cart in distinct classes.
 
-### ✅ SRP in Action
+###  SRP in Action
 
 - Each command performs one action.
 - `ShoppingCart` doesn’t manage the logic itself, only delegates.
 
-### 🔍 From the code:
+###  From the code:
 
 ```java
 public class AddProductCommand implements ProductCommand {
@@ -114,7 +114,7 @@ Every action has a well-defined, isolated responsibility.
 
 ---
 
-## ✅ Conclusion
+##  Conclusion
 
 By using these design patterns:
 
