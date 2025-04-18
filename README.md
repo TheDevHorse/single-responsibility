@@ -1,4 +1,4 @@
-# Single Responsibility and Design Patterns
+# Applying the Single Responsibility Principle with Design Patterns
 
 This project demonstrates how the **Factory**, **Strategy**, and **Command** design patterns are used to follow the **Single Responsibility Principle (SRP)** in object-oriented software design.
 
