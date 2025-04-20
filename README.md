@@ -8,24 +8,25 @@ This project demonstrates how the **Factory**, **Strategy**, and **Command** des
 
 The **Single Responsibility Principle (SRP)** in software design means that a class, module, or function should have **only one reason to change**. In other words, it should have only one responsibility or job.
 
-By enforcing SRP, we reduce the likelihood of side effects during code changes, improve maintainability, and support more modular, testable design.
+Enforcing SRP reduces the likelihood of side effects when code changes, improves maintainability, and promotes modular, testable design.
 
-**Design patterns** are powerful tools that help us achieve SRP in a clean and consistent way.
+**Design patterns** are powerful tools that help achieve SRP in a clean, consistent way.
 
 ---
 
-## Factory Pattern 
+## Factory Pattern – Centralized Object Creation
 
-Object creation can become scattered and repetitive across a codebase. To avoid this, the `Factory` pattern centralizes instantiation logic. In this project, `ProductFactory` handles the creation of products like `Phone` and `Laptop`, mapping each type to its factory method. This keeps construction logic separate from business logic and adheres to SRP.
+Object creation can become scattered and repetitive across a codebase. To avoid this, the `Factory` pattern centralizes instantiation logic. 
 
+In this project, `ProductFactory` is responsible for creating 'Product' instances like 'Phone' and 'Laptop', each mapped to its own factory method. This keeps construction logic separate from business logic, aligning with SRP.
 
-###  SRP in Action
+###  Implementation Overview
 
 - `ProductFactory` encapsulates **only object creation**.
 - `Phone` and `Laptop` are responsible **only for product behavior and internal logic**.
 - Business logic remains clean and focused, free of instantiation details.
 
-###  From the code:
+###  Code Example:
 
 ```java
 public static Product getProduct(String type, String name, double price, String color) {
@@ -49,24 +50,23 @@ public class Laptop implements Product {
 }
 ```
 
-This allows products to be created without exposing or duplicating instantiation logic across the system.
+This approach allows consistent, centralized creation of product instances without exposing or duplicating instantiation logic throughout the system.
 
 ---
 
-##  Strategy Pattern 
+##  Strategy Pattern – Encapsulated Algorithms
 
-##  Strategy Pattern – Each class performs one algorithm
+The `Strategy` pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. It separates the algorithm from the context in which it’s used, supporting SRP by isolating calculation logic.
 
-The `Strategy` pattern is used to define a family of algorithms, encapsulate each one, and make them interchangeable. It promotes flexibility by separating the algorithm from the class that uses it.
+In this project, it’s applied to discount calculation. Since discount rules vary by product type and may evolve independently, each rule is implemented in its own class. `PriceCalculator` delegates the calculation to the selected strategy, keeping concerns well-separated.
 
-In this project, it's applied to handle discount logic. Since discount rules can vary across product types and evolve over time, each rule is placed in its own class. `PriceCalculator` delegates the calculation to the selected strategy — keeping responsibilities isolated and aligned with SRP.
+###  Implementation Overview
 
-###  SRP in Action
-
-- Each strategy class encapsulates one specific discount rule.
+- Each strategy class encapsulates a **single discount rule.**
 - `PriceCalculator` applies the strategy without knowing its internal logic.
 - New algorithms can be added without modifying existing code.
-###  From the code:
+
+###  Code Example:
 
 ```java
 public class ElectronicsDiscountStrategy implements DiscountStrategy {
@@ -96,19 +96,19 @@ Each algorithm is isolated and easy to modify, test, or extend independently.
 
 ---
 
-##  Command Pattern – Each class represents a single action
+##  Command Pattern – Isolated Actions
 
-The `Command` pattern encapsulates a request as an object, allowing you to parameterize, queue, and execute actions independently of the calling code.
+The `Command` pattern encapsulates a request as an object, enabling parameterization, queuing, and execution of actions independently of the invoking code.
 
 In this project, it's used to model operations on a shopping cart — such as adding or removing a product — by placing each action in its own command class. This keeps the `ShoppingCart` focused on execution, not behavior.
 
-### SRP in Action
+### Implementation Overview
 
-- Each command class encapsulates a single, well-defined operation.
+- Each command class **encapsulates a single, well-defined action.**
 - `ShoppingCart` delegates execution without knowing the action's logic.
 - New actions can be added without changing existing code.
 
-###  From the code:
+###  Code Example:
 
 ```java
 public class AddProductCommand implements ProductCommand {
@@ -140,8 +140,12 @@ Every action has a well-defined, isolated responsibility.
 
 ## Conclusion
 
-By using these design patterns, each responsibility in the system is clearly separated:
+By applying these design patterns, each responsibility in the system is clearly separated:
 
-The **Factory** pattern ensures that object creation is handled in one place, so creation logic doesn't leak into business logic. The **Strategy** pattern encapsulates each algorithm (like discount calculation) in its own class, making the system flexible and easily extendable. The **Command** pattern delegates actions like adding or removing products from the cart to individual classes, keeping responsibilities isolated and focused.
+- The **Factory** pattern centralizes object creation, so creation logic doesn’t leak into business logic. 
 
-These examples demonstrate how to structure code so that **each class has only one reason to change**. The result is a modular, extensible, and maintainable system — true to the spirit of the **Single Responsibility Principle**.
+- The **Strategy** pattern encapsulates algorithms (like discount calculations) into separate, reusable classes. 
+
+- The **Command** pattern breaks down user actions into modular, isolated commands.
+
+These implementations show how to structure code so that **each class has only one reason to change,** in accordance with the **Single Responsibility Principle.** The result is a modular, extensible, and maintainable system.
